@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, HTTPRequestMethod) {
     HTTPRequestMethodDELETE
 };
 
-
+@class NOAPIMapper;
 @class AFHTTPRequestOperationManager;
 
 @protocol NOAPITask;
@@ -68,6 +68,7 @@ typedef NS_ENUM(NSInteger, HTTPRequestMethod) {
 
 
 @interface AbstractAPIController : NSObject
+@property (nonatomic, readonly) NOAPIMapper *mapper;
 @property (nonatomic, readonly) AFHTTPRequestOperationManager *requestManager;
 
 - (instancetype)initWithBaseURL:(NSString *)baseAPIURL fieldsMap:(NSDictionary *)fieldsMap

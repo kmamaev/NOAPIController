@@ -126,6 +126,14 @@
         success:success failure:failure];
 }
 
+- (id<NOAPITask>)getObjectOfType:(Class)objectType fromURL:(NSString *)objectURL
+    PATCHData:(NSData *)patchData success:(void (^)(id, id))success
+    failure:(void (^)(NSError *error, id response))failure
+{
+    return [self getObjectOfType:objectType fromURL:objectURL method:@"PATCH" httpBody:patchData
+        success:success failure:failure];
+}
+
 - (void)postData:(NSData *)postData toURL:(NSString *)objectURL
     success:(void (^)(id))success failure:(void (^)(NSError *error, id response))failure
 {
@@ -208,6 +216,11 @@
             }
             case HTTPRequestMethodPUT: {
                 apiTask.operation = [self.requestManager PUT:objectURL parameters:nil
+                    success:successBlock failure:failureBlock];
+                break;
+            }
+            case HTTPRequestMethodPATCH: {
+                apiTask.operation = [self.requestManager PATCH:objectURL parameters:nil
                     success:successBlock failure:failureBlock];
                 break;
             }

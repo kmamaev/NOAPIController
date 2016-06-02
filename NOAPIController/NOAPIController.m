@@ -134,6 +134,14 @@
         success:success failure:failure];
 }
 
+- (id<NOAPITask>)getObjectOfType:(Class)objectType fromURL:(NSString *)objectURL
+    DELETEData:(NSData *)patchData success:(void(^)(id rawObject, id resultingObject))success
+    failure:(void(^)(NSError *error, id response))failure {
+
+	return [self getObjectOfType:objectType fromURL:objectURL method:@"DELETE" httpBody:patchData
+        success:success failure:failure];
+}
+
 - (void)postData:(NSData *)postData toURL:(NSString *)objectURL
     success:(void (^)(id))success failure:(void (^)(NSError *error, id response))failure
 {

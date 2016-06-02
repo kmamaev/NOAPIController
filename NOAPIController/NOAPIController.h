@@ -95,6 +95,10 @@ typedef NS_ENUM(NSInteger, HTTPRequestMethod) {
     PATCHData:(NSData *)patchData success:(void(^)(id rawObject, id resultingObject))success
     failure:(void(^)(NSError *error, id response))failure;
 
+- (id<NOAPITask>)getObjectOfType:(Class)objectType fromURL:(NSString *)objectURL
+    DELETEData:(NSData *)patchData success:(void(^)(id rawObject, id resultingObject))success
+    failure:(void(^)(NSError *error, id response))failure;
+
 - (void)postData:(NSData *)postData toURL:(NSString *)objectURL
     success:(void (^)(id))success failure:(void (^)(NSError *error, id response))failure;
 
